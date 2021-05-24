@@ -1,0 +1,9 @@
+// intersection
+// order of table A nd B does not matter
+// INNER JOIN    ON 
+// final result has all the columns of A + B
+// avoid dupliacy
+// JOIN is treated as INNER JOIN in Postgresql
+
+SELECT * FROM payment INNER JOIN customer ON payment.customer_id = payment.customer_id
+SELECT email, payment.customer_id ,amount FROM payment INNER JOIN customer ON payment.customer_id = payment.customer_id

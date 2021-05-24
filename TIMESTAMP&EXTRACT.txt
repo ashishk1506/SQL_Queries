@@ -1,0 +1,51 @@
+// time date type can be changed to remove unnessesary info 
+// useful when creating own table
+// 
+   TIME - for time only 
+   DATE - for date only
+   TIMESTAMP- for date and time
+   TIMESTAMPTZ - for date, time and timezone
+// 
+  function and operation
+  TIMEZONE
+  NOW
+  TIMETODAY
+  CURRENT_TIME
+  CURRENT_DATE
+
+SHOW ALL
+SHOW TIMEZONE
+SELECT NOW() - give timestamp 
+SELECT TIMEOFDAY() - Tue May 25 02:09:49.587114 2021 IST
+SELECT CURRENT_DATE
+SELECT CURRENT_TIME
+
+//
+  EXTRACT()  -  extracts subcomponent from TIMESTAMP
+     YEAR	
+     MONTH
+     DAY
+     WEEK
+     QUARTER
+//
+  AGE() - gives how much old is
+//
+  TO_CHAR() - formatting to text with special pattern
+
+
+SELECT EXTRACT(YEAR from payment_date) FROM payment
+SELECT EXTRACT(YEAR from payment_date) AS pay_year FROM payment 
+SELECT EXTRACT(QUARTER from payment_date) FROM payment 
+SELECT EXTRACT(MONTH from payment_date) FROM payment 
+
+SELECT AGE(payment_date) FROM payment 
+
+SELECT TO_CHAR(payment_date,'MONTH YYYY') FROM payment
+SELECT TO_CHAR(payment_date,'MON/dd/YYYY') FROM payment 
+SELECT TO_CHAR(payment_date,'MM/dd/YYYY') FROM payment
+SELECT TO_CHAR(payment_date,'dd-mm-YYYY') FROM payment  
+
+// CHALLANGE
+SELECT DISTINCT(TO_CHAR( payment_date,'MONTH')) FROM payment 
+SELECT COUNT(TO_CHAR(payment_date,'Day')) FROM payment WHERE TO_CHAR(payment_date,'Day') = 'Monday   '
+SELECT COUNT(*) FROM payment WHERE EXTRACT(dow FROM payment_date) = 1

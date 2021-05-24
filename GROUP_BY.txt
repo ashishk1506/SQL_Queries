@@ -1,0 +1,37 @@
+// GROUP BY should come immediately after FROM or WHERE
+// SELECT x,y,AGGREGATE_FUNC(z) FROM customer GROUP BY x,y
+
+//// aggregate acts per group
+
+// GROUP BY must have a AGGREGATE_FUNCTION
+// GROUP BY groups similar data into one along with AGGREGATE operation
+// if no aggregate operation then its liks DISTICT()
+
+//invalid SELECT * FROM payment GROUP BY customer_id
+//invalid SELECT customer_id,payment_date,SUM(amount) FROM payment GROUP BY customer_id
+
+SELECT customer_id FROM payment GROUP BY customer_id  //distinct
+SELECT customer_id,SUM(amount) FROM payment GROUP BY customer_id   //sum per group
+SELECT customer_id,SUM(amount) FROM payment GROUP BY customer_id ORDER BY SUM(amount)
+SELECT customer_id,COUNT(amount) FROM payment GROUP BY customer_id ORDER BY SUM(amount) desc
+
+// subgrouping
+SELECT customer_id,staff_id,SUM(amount) FROM payment GROUP BY customer_id,staff_id
+SELECT customer_id,staff_id,SUM(amount) FROM payment GROUP BY customer_id,staff_id ORDER BY customer_id
+SELECT customer_id,staff_id,SUM(amount) FROM payment GROUP BY customer_id,staff_id ORDER BY customer_id,staff_id
+
+// DATE() fetch only date from TIMESTAMP
+SELECT DATE(payment_date) FROM payment GROUP BY DATE(payment_date) 
+SELECT DATE(payment_date),SUM(amount) FROM payment GROUP BY DATE(payment_date)
+SELECT DATE(payment_date),SUM(amount) FROM payment GROUP BY DATE(payment_date) ORDER BY SUM(amount)
+
+// CHALLANGE
+
+SELECT staff_id,COUNT(staff_id) FROM payment GROUP BY staff_id ORDER BY COUNT(staff_id) DESC LIMIT 1
+SELECT staff_id,COUNT(*) FROM payment GROUP BY staff_id ORDER BY COUNT(staff_id) DESC LIMIT 1
+
+SELECT rating,ROUND(AVG(replacement_cost),2) FROM film GROUP BY rating
+
+SELECT customer_id,SUM(amount) FROM payment GROUP BY customer_id ORDER BY SUM(amount) DESC LIMIT 5 
+
+

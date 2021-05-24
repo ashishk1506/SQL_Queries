@@ -1,0 +1,9 @@
+//return only 1 aggregate value
+// COUNT(), AVG(), SUM(), MIN(), MAX()
+
+//invalid SELECT * FROM film WHERE replacement_cost = MAX(replacement_cost)
+
+SELECT MIN(replacement_cost) FROM film 
+SELECT MIN(replacement_cost),MAX(replacement_cost) FROM film 
+SELECT AVG(length) FROM film 
+SELECT ROUND(AVG(length),2) FROM film 

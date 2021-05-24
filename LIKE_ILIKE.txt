@@ -1,0 +1,12 @@
+
+//LIKE IS CASE SENSITIVE ILIKE IS NOT
+// % ACCOUNTS FOR 0,1 OR MORE WILDCARD
+// _ ACCOUNTS FOR ONLY 1 WILDCARD
+
+SELECT * FROM customer WHERE last_name LIKE ('E%')
+SELECT * FROM customer WHERE last_name LIKE ('_E%')
+SELECT * FROM customer WHERE last_name LIKE ('E__')
+SELECT * FROM customer WHERE last_name ILIKE ('E__')
+SELECT * FROM customer WHERE last_name ILIKE ('e__')
+SELECT * FROM customer WHERE last_name LIKE ('e__')
+SELECT * FROM customer WHERE last_name LIKE 'E__'

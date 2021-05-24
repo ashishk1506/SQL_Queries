@@ -1,0 +1,9 @@
+// WHERE amount = 8 OR amount = 9 or amount = 10 = WHERE amount IN(8,9,10)
+
+SELECT * FROM payment WHERE amount IN (7.99,1.99)
+SELECT * FROM payment WHERE amount IN (7.99,1.99) ORDER BY amount
+SELECT * FROM payment WHERE amount NOT IN (7.99,1.99)
+
+SELECT COUNT(*) FROM payment WHERE amount NOT IN (7.99,1.99)
+SELECT COUNT(*) FROM payment WHERE amount = 7.99 OR amount = 1.99
+SELECT COUNT(*) FROM payment WHERE amount != 7.99 AND amount != 1.99

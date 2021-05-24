@@ -1,0 +1,16 @@
+// alias
+// works and used with function
+// executed at end of query 
+// cannot use inside WHERE or GROUP BY
+
+SELECT amount AS price FROM payment
+SELECT SUM(amount) AS total_price FROM payment
+SELECT COUNT(*) AS transaction FROM payment
+
+SELECT customer_id,SUM(amount) AS money FROM payment GROUP BY customer_id
+SELECT customer_id,SUM(amount) AS money FROM payment GROUP BY customer_id HAVING SUM(amount) > 100
+
+SELECT amount AS money,staff_id FROM payment WHERE amount >2
+
+//invalid  SELECT customer_id,SUM(amount) AS money FROM payment GROUP BY customer_id HAVING money > 100
+//invalid SELECT amount AS money,staff_id FROM payment WHERE money >2

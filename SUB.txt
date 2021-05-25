@@ -1,0 +1,21 @@
+// SUB queries are executed first
+// EXIST operator is used to check if SUB returns something or not
+// SUB queries returning single can have mathematical operator
+// else use IN 
+
+(SELECT AVG(amount) FROM payment)
+SELECT * FROM payment WHERE amount > (SELECT AVG(amount) FROM payment)
+
+SELECT title,film_id FROM film WHERE film_id IN
+  (SELECT film_id FROM rental INNER JOIN inventory ON rental.inventory_id = inventory.inventory_id 
+  WHERE return_date BETWEEN '2005-05-28' AND '2005-05-29')
+  ORDER BY film_id
+
+SELECT first_name,last_name from customer WHERE EXISTS
+  (SELECT * FROM payment WHERE customer.customer_id = payment.customer_id AND amount>11)
+
+SELECT first_name,last_name from customer AS c WHERE EXISTS
+  (SELECT * FROM payment AS p WHERE c.customer_id = p.customer_id AND amount>11)
+
+SELECT first_name,last_name from customer WHERE NOT EXISTS
+  (SELECT * FROM payment WHERE customer.customer_id = payment.customer_id AND amount>11)

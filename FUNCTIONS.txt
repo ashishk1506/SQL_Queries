@@ -1,0 +1,4 @@
+// refer documentation
+
+SELECT rental_rate/replacement_cost FROM film
+SELECT (rental_rate/replacement_cost)*100 FROM film

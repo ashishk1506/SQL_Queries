@@ -1,0 +1,49 @@
+BETWEEN
+// amount BETWEEN 8 AND 9 = WHERE amount >=8 AND amount <=9
+// amount NOT BETWEEN 8 AND 9 = WHERE amount <8 AND amount >9
+
+SELECT * FROM payment WHERE AMOUNT BETWEEN 8 AND 9
+SELECT COUNT(*) FROM payment WHERE AMOUNT BETWEEN 8 AND 9
+SELECT COUNT(*) FROM payment WHERE AMOUNT >= 8 AND <=9
+SELECT COUNT(*) FROM payment WHERE AMOUNT >= 8 AND AMOUNT <= 9
+SELECT * FROM payment WHERE AMOUNT BETWEEN 8 AND 9
+SELECT COUNT(*) FROM payment WHERE AMOUNT BETWEEN 8 AND 9
+SELECT COUNT(*) FROM payment WHERE AMOUNT NOT BETWEEN 8 AND 9
+SELECT COUNT(*) FROM payment WHERE amount <8 OR amount>9
+SELECT COUNT(*) FROM payment WHERE amount <8 OR amount>=9
+SELECT COUNT(*) FROM payment WHERE amount <= 8 OR amount>=9
+
+
+SELECT COUNT(*) FROM payment WHERE payment_date BETWEEN '2007-02-01' AND '2007-02-14'
+SELECT COUNT(*) FROM payment 
+WHERE payment_date BETWEEN '2007-02-01' AND '2007-02-15'
+
+
+
+
+IN
+// WHERE amount = 8 OR amount = 9 or amount = 10 = WHERE amount IN(8,9,10)
+
+SELECT * FROM payment WHERE amount IN (7.99,1.99)
+SELECT * FROM payment WHERE amount IN (7.99,1.99) ORDER BY amount
+SELECT * FROM payment WHERE amount NOT IN (7.99,1.99)
+
+SELECT COUNT(*) FROM payment WHERE amount NOT IN (7.99,1.99)
+SELECT COUNT(*) FROM payment WHERE amount = 7.99 OR amount = 1.99
+SELECT COUNT(*) FROM payment WHERE amount != 7.99 AND amount != 1.99
+
+
+
+
+LIKE_ILIKE
+//LIKE IS CASE SENSITIVE ILIKE IS NOT
+// % ACCOUNTS FOR 0,1 OR MORE WILDCARD
+// _ ACCOUNTS FOR ONLY 1 WILDCARD
+
+SELECT * FROM customer WHERE last_name LIKE ('E%')
+SELECT * FROM customer WHERE last_name LIKE ('_E%')
+SELECT * FROM customer WHERE last_name LIKE ('E__')
+SELECT * FROM customer WHERE last_name ILIKE ('E__')
+SELECT * FROM customer WHERE last_name ILIKE ('e__')
+SELECT * FROM customer WHERE last_name LIKE ('e__')
+SELECT * FROM customer WHERE last_name LIKE 'E__'

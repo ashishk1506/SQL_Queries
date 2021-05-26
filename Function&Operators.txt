@@ -16,3 +16,8 @@ SELECT UPPER(first_name ||' '|| last_name) AS full_name FROM customer
 SELECT first_name || last_name || '@gmail.com'  FROM customer
 SELECT LEFT(first_name,1) || last_name || '@gmail.com'  FROM customer
 SELECT LOWER(LEFT(first_name,1) || last_name || '@gmail.com') FROM customer
+
+// refer documentation
+
+SELECT rental_rate/replacement_cost FROM film
+SELECT (rental_rate/replacement_cost)*100 FROM film

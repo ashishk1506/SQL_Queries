@@ -1,0 +1,29 @@
+smallint
+integer
+bigint
+decimal
+numeric
+real
+double
+precision
+smallserial   -2
+serial        -4
+bigserial     -8
+
+
+
+Constraint
+
+//column constraint
+NOT NULL
+UNIQUE        --data in a column should be uniqe
+PRIMARY KEY
+FOREIGN KEY
+CHECK         --checks condition
+EXCLUSION     --
+
+//table constartint
+CHECK
+REFERENCES
+UNIQUE        -- two columns should be uniqee
+PRIMARY KEY   -- multiple primary key

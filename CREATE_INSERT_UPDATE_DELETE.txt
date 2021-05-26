@@ -1,0 +1,107 @@
+CREATE
+
+CREATE TABLE ( col_name1 DATA TYPE constraint, 
+col_name1 DATA TYPE constraint, 
+table_constraint) INHERITS existing_table_name
+
+CREATE TABLE account (
+	user_id SERIAL PRIMARY KEY,
+        username VARCHAR(50) UNIQUE NOT NULL,
+	password VARCHAR(50) NOT NULL,
+	email VARCHAR(250) UNIQUE NOT NULL,
+	created_on TIMESTAMP NOT NULL,
+	last_login TIMESTAMP
+    )
+
+CREATE TABLE job (
+	job_id SERIAL PRIMARY KEY,
+    job_name VARCHAR(200) UNIQUE NOT NULL
+    )
+
+//
+  intermidiary tabel with FOREIGN KEY
+CREATE TABLE account_job (
+	user_id INTEGER REFERENCES account(user_id),
+        job_id INTEGER REFERENCES job(job_id),
+	hire TIMESTAMP
+    )
+
+CHECK 
+           CREATE TABLE employee (
+           emp_id SERIAL PRIMARY KEY,
+           first_name VARCHAR(50) NOT NULL,
+           birth_date DATE CHECK (birth_date > '1900-01-01'),
+	   hire_date DATE CHECK (hire_date > birth_date),
+	   salary INTEGER CHECK (salary > 0)
+	)
+        INSERT INTO employee (first_name,birth_date,hire_date,salary) VALUES 
+        ('ashish','1999-07-08','2001-01-01',1)
+
+
+
+INSERT
+
+INSERT INTO tab_name (col1,col2) VALUES (val1,val2)
+
+INSERT INTO account (username,password,email,created_on) VALUES ('abha','aaa','aA@gmail.com',CURRENT_TIMESTAMP)
+INSERT INTO job (job_name) VALUES ('hitler')
+INSERT INTO account_job (user_id,job_id,hire) VALUES (2,2,CURRENT_TIMESTAMP)
+
+//invalid INSERT INTO account_job (user_id,job_id,hire) VALUES (2,5,CURRENT_TIMESTAMP)
+
+
+
+
+
+UPDATE
+
+UPDATE tab_name SET col_name = val1 WHERE cond.
+//can be use to update entire row with single vale when condition not given
+//val can be val form other column of same table
+//val can be updated from diffrenet table  UPDATE..SET..FROM..WHERE
+//return updated result UPDATE..SET..RETURNING(cols)
+
+UPDATE account SET last_login  = created_on WHERE user_id = 2
+UPDATE account_job SET hire = account.created_on FROM account WHERE account_job.user_id = account.user_id
+UPDATE account_job SET hire = CURRENT_TIMESTAMP RETURNING user_id,job_id,hire
+
+
+
+
+
+DELETE
+
+DELETE FROM tab_name WHERE cond.
+//can be delted with another table value match
+//delete all withut cond.
+//use returning to return deleted value
+
+DELETE FROM account_job WHERE user_id = 2 RETURNING user_id,job_id
+
+
+
+
+
+ALTER
+
+ALTER TABLE tb_name action
+//add drop rename column
+//change column datatype
+//set default value to column
+//add check constraint
+//rename table
+
+CREATE TABLE information (info_id SERIAL PRIMARY KEY, title VARCHAR(250) NOT NULL, person VARCHAR(250) NOT NULL UNIQUE)
+ALTER TABLE information RENAME TO info_tab
+ALTER TABLE info_tab RENAME person TO p
+ALTER TABLE info_tab ALTER COLUMN p DROP NOT NULL
+ALTER TABLE info_tab DROP COLUMN p
+ALTER TABLE info_tab DROP COLUMN IF EXISTS p
+ALTER TABLE info_tab DROP COLUMN IF EXISTS p CASCADE  
+
+
+
+
+
+
+
